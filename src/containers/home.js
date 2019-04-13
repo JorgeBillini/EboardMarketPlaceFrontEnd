@@ -104,7 +104,7 @@ export default class Home extends React.Component {
         {
           this.state.isShop === true ? <ShopNav shop_handle={this.state.shop_handle} shopid={this.state.shopid} /> : ''
         }
-         <h5 className="category-title">Best Selling</h5>
+         <h5 className="category-title">Featured</h5>
           <div className="columns">
               {
 
@@ -114,14 +114,7 @@ export default class Home extends React.Component {
                 })
               }
                   </div>
-                  <h5 className="category-title">New</h5>
-                <div className="columns">
-              {
-                this.state.products.map((e,i)=>{
-                  return <div key={i} className="column is-3"><Product item={e} image={JSON.parse(e.image_url_array)[0]} cartId={i} handleCartC lick={this.handleCartClick}/></div>
-                })
-              }
-                  </div>
+                  
         </>
       )
     }
