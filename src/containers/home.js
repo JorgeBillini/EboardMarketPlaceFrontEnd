@@ -10,7 +10,7 @@ export default class Home extends React.Component {
   state = {
     userEmail: '',
     userId: '',
-    isShop: null,
+    isShop: false,
     shopid: '',
     shop_handle: '',
     token: '',
@@ -60,11 +60,12 @@ export default class Home extends React.Component {
   componentDidUpdate = async() => {
     if (this.state.isShop === "loading"){
       const isShop  = await axios.get(`https://eboardmarket.herokuapp.com/shop/isShop/${this.state.userId}`)
-      console.log(isShop,"is shop request")
-      console.log(isShop.data.shop_info.id,"hi is my id")
-      this.setState({isShop:isShop.data.isShop,shop_handle:isShop.data.shop_info.shop_handle,shopid:isShop.data.shop_info.id},()=>{
-        console.log(this.state, "after update")
-      })
+      if(isShop.data.isShop === true){
+        this.setState({isShop:isShop.data.isShop,shop_handle:isShop.data.shop_info.shop_handle,shopid:isShop.data.shop_info.id},()=>{
+          console.log(this.state, "after update")
+        })
+      }
+      
     }
     
         // this.setState({isShop:isShop.data.isShop},()=>{
