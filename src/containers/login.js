@@ -42,10 +42,12 @@ export default class Login extends React.Component {
   componentWillUnmount() {
     this.unsubscribe();
   }
-
+  closeErr = (e) => {
+    this.setState({error:''})
+}
   render() {
-    const { email, password, error } = this.state;
-    const displayError = error === '' ? '' : <div className="alert alert-danger" role="alert">{error}</div>
+    const { error } = this.state;
+    const displayError = error === '' ? '' : <div className="notification is-danger" role="alert">{error} <button onClick={this.closeErr}className="delete" /></div>
 
     return (
       <>
@@ -71,7 +73,7 @@ export default class Login extends React.Component {
     </span>
   </p>
 </div>
-    <a className="button is-warning" onClick={this.handleSubmit}>Log In</a>
+    <button className="button is-warning" onClick={this.handleSubmit}>Log In</button>
 
         </form>
       </>

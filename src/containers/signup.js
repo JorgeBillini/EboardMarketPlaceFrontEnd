@@ -1,5 +1,6 @@
 import React from 'react';
 import firebase from '../firebase';
+import Axios from 'axios';
 
 export default class Signup extends React.Component {
 
@@ -15,11 +16,28 @@ export default class Signup extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-
     const { email, password } = this.state;
     firebase.auth().createUserWithEmailAndPassword(email, password)
       .then((response) => {
+        //response.user.uid
+        //@username 
+        ///@email
+        //@password
+        //@uid
         console.log('Returns: ', response);
+        const url = `https://eboardmarket.herokuapp.com/user/`
+        Axios.post(url,{
+          username:this.state.email,
+          email:this.state.email,
+          password:this.state.password,
+          firebase_id: response.user.uid
+        })
+        .then(response=>{
+          console.log(response);
+        })
+        .catch(e=>{
+          console.log(e)
+        })
       })
       .catch(err => {
         const { message } = err;
@@ -49,7 +67,7 @@ export default class Signup extends React.Component {
   render() {
     const { email, password, error } = this.state;
     const errorJSX = <div class="notification is-danger">
-        <button onClick={this.closeErr} class="delete"></button>
+        <button onClick={this.closeErr} className="delete"></button>
          {error}
   </div>
   
@@ -59,31 +77,31 @@ export default class Signup extends React.Component {
       <>
         <h1>Sign Up</h1>
         {displayError}
-        <div class="panel">
-    <div class="panel-heading">
+        <div className="panel">
+    <div className="panel-heading">
         Sign Up
     </div>
 
-    <div class="panel-block">
-      <p class="control has-icon">
-        <input class="input is-expanded" type="email" placeholder="E-mail Address" name="email" name="email" value={email} onChange={this.handleChange} autofocus />
-        <span class="icon is-small">
-          <i class="fa fa-envelope"></i>
+    <div className="panel-block">
+      <p className="control has-icon">
+        <input className="input is-expanded" type="email" placeholder="E-mail Address" name="email" name="email" value={email} onChange={this.handleChange} autoFocus />
+        <span className="icon is-small">
+          <i className="fa fa-envelope"></i>
         </span>
       </p>
     </div>
 
-    <div class="panel-block">
-      <p class="control has-icon">
-        <input class="input is-expanded" type="password" placeholder="Password" name="password" value={password} name="password" onChange={this.handleChange} />
-        <span class="icon is-small">
-          <i class="fa fa-lock"></i>
+    <div className="panel-block">
+      <p className="control has-icon">
+        <input className="input is-expanded" type="password" placeholder="Password" name="password" value={password} name="password" onChange={this.handleChange} />
+        <span className="icon is-small">
+          <i className="fa fa-lock"></i>
         </span>
       </p>
     </div>
-    <div class="panel-block">
-      <p class="control">
-        <button onClick={this.handleSubmit} class="button is-success" type="submit">
+    <div className="panel-block">
+      <p className="control">
+        <button onClick={this.handleSubmit} className="button is-success" type="submit">
           Sign Up
         </button>
       </p>
@@ -93,15 +111,3 @@ export default class Signup extends React.Component {
     )
   }
 }
-{/* /*
- <div className="form-group">
-            <label htmlFor="exampleInputEmail1">Email</label>
-            <input type="email" className="form-control" aria-describedby="emailHelp" placeholder="Enter email" name="email" value={email} onChange={this.handleChange} />
-          </div>
-          <div className="form-group">
-            <label htmlFor="exampleInputPassword1">Password</label>
-            <input type="password" className="form-control" placeholder="Password" value={password} name="password" onChange={this.handleChange} />
-          </div>
-          <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>Sign Up</button>
-
-*/ }
