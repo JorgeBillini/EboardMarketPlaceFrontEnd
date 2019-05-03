@@ -3,11 +3,11 @@ import app from 'firebase/app';
 import 'firebase/auth';
 
 const config = {
-        apiKey: "AIzaSyCxntuqEdhdVVWcg7KnVG8gJBJpM1rgvVM",
-        authDomain: "eboardmarketplace.firebaseapp.com",
-        databaseURL: "https://eboardmarketplace.firebaseio.com",
-        projectId: "eboardmarketplace",
-        storageBucket: "eboardmarketplace.appspot.com",
+        apiKey: "API_KEY_HERE",
+        authDomain: "APP_DOMAIN",
+        databaseURL: "APP_URL",
+        projectId: "APP_id",
+        storageBucket: "APP_STORAGE",
         messagingSenderId: "1075291943989"
 };
 
