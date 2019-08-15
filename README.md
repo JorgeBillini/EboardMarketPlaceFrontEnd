@@ -13,7 +13,7 @@ Users also have the option to sign up as a shop allowing them to:
 ## Technologies Used
 1. React  
   used React in this project because it gave me the quickes time-to-mvp and it provided with great features!
-2. Firebase 
-Used firebase to handle Authenthication/Sign Up 
+2. Firebase <br />
+  Used firebase to handle Authenthication/Sign Up 
 
 
