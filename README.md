@@ -16,4 +16,9 @@ Users also have the option to sign up as a shop allowing them to:
 2. Firebase <br />
   Used firebase to handle Authenthication/Sign Up 
 
+3. NodeJS/Express<br />
+  The Backend is written completely in NodeJS using express to handle requests, it's concurrency capabilities make it great for a marketplace solution.
+
+4. PostgreSQL <br />
+  used Postgres to manage relationships between shops-products and orders. Made it a breeze to handle!
 
